@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickBite - Restaurants</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    
+    <!-- Google Fonts for Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <!-- Link to custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+    <!-- Custom CSS for better UI/UX -->
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        /* Navbar Styling */
+        .navbar {
+            background-color: #28a745;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            color: white !important;
+            font-weight: 600;
+        }
+        .nav-link {
+            color: white !important;
+        }
+        .nav-link:hover {
+            color: #d4d4d4 !important;
+        }
+
+        /* Header */
+        h1, h2 {
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* Carousel Styling */
+        .carousel-inner img {
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Cards for Restaurants */
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #28a745;
+        }
+        .card-text {
+            color: #555;
+            margin-bottom: 15px;
+        }
+        .btn-primary {
+            background-color: #28a745;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #218838;
+        }
+
+        /* About Us Section */
+        .about-us {
+            background-color: #e9ecef;
+            padding: 40px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #28a745;
+            color: black;
+            padding: 20px 0;
+            width: 100%;
+        }
+        footer a {
+            color: black;
+            font-weight: 500;
+        }
+        footer a:hover {
+            color: #333;
+        }
+
+        /* Additional Styling for Responsiveness */
+        @media (max-width: 768px) {
+            .carousel-inner img {
+                height: 300px;
+            }
+            .about-us {
+                padding: 20px;
+            }
+        }
+    </style>
+    
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light shadow-sm">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                QuickBite 
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="white" viewBox="0 0 24 24">
+                    <path d="M13 2l-10 11h6v9l10-13h-6z"/>
+                </svg>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact-us">Contact Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/cart">Cart</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+
+    <!-- Carousel -->
+    <div id="carouselExampleIndicators" class="carousel slide mt-4" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{{ url_for('static', filename='images/bur.webp') }}" class="d-block w-100" alt="Delicious Pizza">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/pizzas.webp') }}" class="d-block w-100" alt="Tasty Burgers">
+            </div>
+            <div class="carousel-item">
+                <img src="{{ url_for('static', filename='images/biriyani.webp') }}" class="d-block w-100" alt="Fresh Sushi">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+    <!-- Restaurant Listings -->
+    <div class="container mt-4">
+        <h1 class="mb-4">Available Restaurants</h1>
+        <div class="row">
+
+            <!-- The Italian Kitchen -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top" src="{{ url_for('static', filename='images/italian_kitchen.webp') }}" alt="The Italian Kitchen">
+                    <div class="card-body">
+                        <h5 class="card-title">The Italian Kitchen</h5>
+                        <p class="card-text">Authentic Italian cuisine with a variety of pizzas, pastas, and fresh salads.</p>
+                        <a href="/restaurants/1/menu" class="btn btn-primary">View Menu</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sushi House -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top" src="{{ url_for('static', filename='images/sushi_palace.webp') }}" alt="Sushi House">
+                    <div class="card-body">
+                        <h5 class="card-title">Sushi House</h5>
+                        <p class="card-text">Fresh sushi, ramen, and tempura from the heart of Japan, crafted with the finest ingredients.</p>
+                        <a href="/restaurants/2/menu" class="btn btn-primary">View Menu</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mexican Fiesta -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top" src="{{ url_for('static', filename='images/mexican_fiesta.webp') }}" alt="Mexican Fiesta">
+                    <div class="card-body">
+                        <h5 class="card-title">Mexican Fiesta</h5>
+                        <p class="card-text">Delightful Mexican dishes bursting with bold flavors and fresh ingredients.</p>
+                        <a href="/restaurants/3/menu" class="btn btn-primary">View Menu</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Burger Palace -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top" src="{{ url_for('static', filename='images/burger_palace.webp') }}" alt="Burger Palace">
+                    <div class="card-body">
+                        <h5 class="card-title">Burger Palace</h5>
+                        <p class="card-text">Juicy, handcrafted burgers made with premium ingredients. The perfect stop for burger lovers!</p>
+                        <a href="/restaurants/4/menu" class="btn btn-primary">View Menu</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grill Master BBQ -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top" src="{{ url_for('static', filename='images/grill_master_bbq.webp') }}" alt="Grill Master BBQ">
+                    <div class="card-body">
+                        <h5 class="card-title">Grill Master BBQ</h5>
+                        <p class="card-text">Smoky and savory BBQ delights, including ribs, grilled chicken, and delicious sides.</p>
+                        <a href="/restaurants/5/menu" class="btn btn-primary">View Menu</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vegan Delights -->
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                    <img class="card-img-top" src="{{ url_for('static', filename='images/vegan_delight.webp') }}" alt="Vegan Delights">
+                    <div class="card-body">
+                        <h5 class="card-title">Vegan Delights</h5>
+                        <p class="card-text">A haven for vegans! Fresh, plant-based meals that are delicious, healthy, and sustainable.</p>
+                        <a href="/restaurants/6/menu" class="btn btn-primary">View Menu</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- About Us Section -->
+    <div class="container mt-5 about-us">
+        <h2 class="mb-4">About Us</h2>
+        <p>
+            At <strong>QuickBite</strong><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" viewBox="0 0 24 24">
+                <path d="M13 2l-10 11h6v9l10-13h-6z"/>
+            </svg>, we are passionate about bringing the best local cuisine directly to your doorstep. 
+            With a variety of restaurants to choose from, you can enjoy your favorite meals without leaving the comfort of your home.
+            Our mission is to make QuickBite fast, convenient, and reliable, with a focus on quality and customer satisfaction.
+        </p>
+        <p>
+            Whether you are craving sushi, burgers, pizza, or a hearty BBQ, we have something for everyone. Our platform is designed
+            to connect you with the best local restaurants in your area, making it easier than ever to get delicious food delivered
+            quickly and efficiently.
+        </p>
+    </div>
+
+    <!-- Contact Us Section -->
+    <div class="container mt-5" id="contact-us">
+        <h2 class="mb-4">Contact Us</h2>
+        <p>Contact us on our social media platforms:</p>
+        <div class="d-flex justify-content-start contact-us">
+            <a href="#" class="me-3">
+                <i class="fab fa-instagram fa-2x"></i>
+            </a>
+            <a href="#" class="me-3">
+                <i class="fab fa-facebook-f fa-2x"></i>
+            </a>
+            <a href="#" class="me-3">
+                <i class="fab fa-twitter fa-2x"></i>
+            </a>
+            <a href="#">
+                <i class="fab fa-whatsapp fa-2x"></i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-light text-center text-lg-start mt-4">    
+        <div class="text-center p-3">
+            <span class="text-dark">© 2024 QuickBite<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" viewBox="0 0 24 24">
+                <path d="M13 2l-10 11h6v9l10-13h-6z"/>
+            </svg>|</span>
+            <a class="text-dark" href="#contact-us">Contact Us</a>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Link to your custom JS file -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>

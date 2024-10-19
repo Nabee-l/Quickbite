@@ -1,0 +1,112 @@
+/* General Body Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #28a745;
+}
+.navbar-brand {
+    color: white !important;
+    font-weight: 600;
+}
+.nav-link {
+    color: white !important;
+}
+.nav-link:hover {
+    color: #ccc !important;
+}
+
+/* Headings */
+h1, h2 {
+    font-weight: 600;
+    color: #333;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #28a745;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #218838;
+}
+
+/* Carousel */
+.carousel-inner img {
+    height: 400px;
+    object-fit: cover;
+}
+
+/* Cards for Restaurants */
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #28a745;
+}
+.card-text {
+    color: #555;
+}
+
+/* About Us Section */
+.about-us {
+    background-color: #e9ecef;
+    padding: 40px;
+    border-radius: 8px;
+}
+
+/* Contact Us Section */
+.contact-us i {
+    color: #28a745;
+}
+
+/* Footer */
+/* Footer */
+footer {
+    background-color: #28a745; /* Green background for footer */
+    color: black; /* Black text color for footer content */
+    padding: 20px;
+}
+footer a {
+    color: black; /* Black color for footer links */
+}
+footer a:hover {
+    color: #ccc; /* Light grey color on hover for footer links */
+}
+
+
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #28a745;
+}
+.card-text {
+    color: #555;
+    font-size: 1.1rem;
+}
+.btn-primary {
+    background-color: #28a745;
+    border: none;
+}
+.btn-primary:hover {
+    background-color: #218838;
+}
+.btn-success {
+    margin-top: 20px;
+    background-color: #28a745;
+    border: none;
+}
+.btn-success:hover {
+    background-color: #218838;
+}
